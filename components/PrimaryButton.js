@@ -1,14 +1,14 @@
 import { View, Text, Pressable, StyleSheet } from "react-native";
+import Colors from "../constants/colors";
 
-function PrimaryButton({ children }) {
-  function pressHandler() {
-    console.log("pressed");
-  }
+function PrimaryButton({ children, onPress }) {
+
+
   return (
     <View style={styles.buttonOuterContainer}>
       <Pressable
-        onPress={pressHandler}
-        android_ripple={{ color: "#fec76f" }}
+        onPress={onPress}
+        android_ripple={{ color: Colors.riple }}
         // pressed нам надо для ios и именно так
         // если нажато, то примени стили "нажатости" или останься как есть
         style={({ pressed }) =>
@@ -16,6 +16,7 @@ function PrimaryButton({ children }) {
             ? [styles.buttonInnercontainer, styles.pressed]
             : styles.buttonInnercontainer
         }
+
       >
         <Text style={styles.buttonText}> {children} </Text>
       </Pressable>
@@ -32,7 +33,7 @@ const styles = StyleSheet.create({
     overflow: "hidden",
   },
   buttonInnercontainer: {
-    backgroundColor: "#72063c",
+    backgroundColor: Colors.primary500,
     paddingVertical: 8,
     paddingHorizontal: 16,
     elevation: 2,
