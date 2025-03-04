@@ -1,4 +1,4 @@
-import { Text, View, StyleSheet } from "react-native";
+import { Text, View, StyleSheet, Dimensions } from "react-native";
 import Colors from "../../constants/colors";
 
 function NumberContainer({ children }) {
@@ -11,19 +11,22 @@ function NumberContainer({ children }) {
 
 export default NumberContainer;
 
+//импортировали и window - это все за исключением status bar
+const deviceWidth = Dimensions.get("window").width;
+
 const styles = StyleSheet.create({
   container: {
     borderWidth: 4,
     borderColor: Colors.riple,
-    padding: 24,
+    padding: deviceWidth < 380 ? 12 : 24 ,
     borderRadius: 8,
-    margin: 24,
+    margin: deviceWidth < 380 ? 12 : 24 ,
     alignItems: "center",
     justifyContent: "center",
   },
   numberText: {
     color: Colors.riple,
-    fontSize: 36,
+    fontSize: deviceWidth < 380 ? 24 : 36 ,
     //fontWeight: "bold",
     fontFamily: "open-sans-bold"
   },
